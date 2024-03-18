@@ -1,0 +1,42 @@
+<div *ngIf="countries.length === 0"
+  class="flex justify-between text-blue-200 shadow-inner rounded p-3 bg-blue-800 mb-5"
+>
+  <p class="self-center">No ahi paises para mostrar</p>
+  <strong class="text-xl align-center cursor-pointer alert-del"
+  >&times;</strong
+  >
+</div>
+
+
+
+
+<table class="border-collapse w-full">
+  <thead>
+  <tr>
+    <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Nombre capital</th>
+    <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Bandera</th>
+    <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Nombre del pais</th>
+    <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Popular</th>
+    <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let country of countries" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+      {{country.capital}}
+    </td>
+    <td class="flex center w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+      <img width="40px" height="40px" src="{{country.flags.svg}}">
+    </td>
+    <td class="flex center w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+      {{country.name.common}}
+    </td>
+    <td class="flex center w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+      {{country.population | number}}
+    </td>
+    <td class="flex center w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+      <a class="underline" href="#">Ver más</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
