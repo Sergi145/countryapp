@@ -1,1 +1,41 @@
-<p>country-page works!</p>
+<ng-template #loading>
+  <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">Espere por favor</span>
+</ng-template>
+
+<div class="grid grid-cols-2 gap-5">
+  <div>
+      <h2 class="my-2 text-xl font-medium text-slate-700 mt-3">Información</h2>
+      <ul *ngIf="country; else loading" class="border border-gray-200 rounded overflow-hidden shadow-md">
+        <li class="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
+          {{country.name.common}}
+        </li>
+        <li class="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
+          <img width="40px" height="40px" src="{{country.flags.svg}}" alt="{{country.name.common}}">
+        </li>
+        <li class="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
+          {{country.population | number}}
+        </li>
+        <li class="px-4 py-2 bg-white hover:bg-sky-100 hover:text-sky-900 border-b last:border-none border-gray-200 transition-all duration-300 ease-in-out">
+          {{country.cca3}}
+        </li>
+      </ul>
+  </div>
+  <div>
+    <h2 class="my-2 text-xl font-medium text-slate-700 mt-3">Traducciones</h2>
+    <div class="flex flex-wrap">
+    <button *ngIf="country; else loading" type="button" class="my-2 mr-2 bg-blue-600 text-white p-2 rounded  leading-none flex items-center">
+      {{country.translations['ara']?.common}}
+    </button>
+    <button *ngIf="country; else loading" type="button" class="my-2 mr-2 bg-blue-600 text-white p-2 rounded  leading-none flex items-center">
+      {{country.translations['bre']?.common}}
+    </button>
+    <button *ngIf="country; else loading" type="button" class="my-2 mr-2 bg-blue-600 text-white p-2 rounded  leading-none flex items-center">
+      {{country.translations['jpn']?.common}}
+    </button>
+      </div>
+  </div>
+</div>
+
+
+
+
